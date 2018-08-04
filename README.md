@@ -6,7 +6,10 @@ Repo structure
 
 ```
 -dofiles
-|--git
+|-- git
+|----|-- .gitmessage
+|-- tmux
+|----|-- .tmux.conf
 ```
 
 ## git ##
@@ -15,3 +18,6 @@ Repo structure
 
     prompt template for commit message. It will applied when committing.
 
+## tmux ##
+
+`.tmux.conf` is configurations of tmux.
