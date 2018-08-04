@@ -10,6 +10,9 @@ Repo structure
 |----|-- .gitmessage
 |-- tmux
 |----|-- .tmux.conf
+|-- oh-my-zsh
+|----|-- .zshrc
+|----|-- .oh-my-zsh
 ```
 
 ## git ##
@@ -21,3 +24,7 @@ Repo structure
 ## tmux ##
 
 `.tmux.conf` is configurations of tmux.
+
+## oh-my-zsh ##
+
+Configuration files for zsh
