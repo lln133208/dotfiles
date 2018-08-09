@@ -6,6 +6,9 @@
 ;; frame title
 (setq frame-title-format "Editor for God @%b")
 
+;; enable highlighting current line
+(global-hl-line-mode t)
+
 ;; line number in left
 (global-linum-mode t)
 
