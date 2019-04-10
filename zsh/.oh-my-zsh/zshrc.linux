@@ -93,6 +93,11 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+## tmux alias
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tl="tmux ls"
+
 # User alias configuration
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
