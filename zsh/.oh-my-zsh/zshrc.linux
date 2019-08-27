@@ -42,7 +42,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump sudo cp zsh-syntax-highlighting colored-man-pages)
+plugins=(git autojump sudo cp zsh-syntax-highlighting colored-man-pages docker docker-compose)
 
 ## autojump load
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
