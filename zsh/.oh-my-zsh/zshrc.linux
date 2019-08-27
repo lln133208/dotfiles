@@ -105,3 +105,8 @@ if [ -n "$WINDOWID" ]; then
     TRANSPARENCY_HEX=$(printf 0x%x $((0xffffffff * 95 / 100)))
     xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "$TRANSPARENCY_HEX"
 fi
+
+#Java
+if [ -d /usr/local/java ]; then
+    export JAVA_HOME=`find /usr/local/java -maxdepth 1 -name 'jdk1.8*'|sort|head -1`
+fi
