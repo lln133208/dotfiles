@@ -50,6 +50,9 @@ autoload -U compinit && compinit -u
 
 # user configuration
 
+# No dups item in the history command list
+setopt HIST_FIND_NO_DUPS
+
 export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
