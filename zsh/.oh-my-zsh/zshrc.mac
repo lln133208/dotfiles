@@ -1,0 +1,49 @@
+DISABLE_AUTO_UPDATE="true"
+HIST_STAMPS="yyyy-mm-dd"
+plugins=(git autojump sudo cp zsh-syntax-highlighting colored-man-pages extract zsh-autosuggestions)
+
+## autojump load
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+# load zsh-autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# user configuration
+
+export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+## pyenv
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    if [ -d "$PYENV_ROOT/plugins/pyenv-virtualenv" ]; then
+        eval "$(pyenv virtualenv-init -)"
+    fi
+fi
+
+. $ZSH/oh-my-zsh.sh
+
+# you may need to manually set your language environment
+# export lang=en_us.utf-8
+if [[ -z $LANG ]]; then
+    export LC_ALL=en_US.utf8
+    export LANG=en_US.utf8
+fi
+
+## tmux alias
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tl="tmux ls"
+
+# User alias configuration
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+
+export EDITOR='emacs -nw'
+
+# Binary mirror source for Homebrew
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
