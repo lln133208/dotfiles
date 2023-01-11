@@ -1,3 +1,4 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 oh-my-posh init pwsh --config "$env:USERPROFILE\.mytheme.omp.json" | Invoke-Expression
 function Set-PoshGitStatus {
     $global:GitStatus = Get-GitStatus
