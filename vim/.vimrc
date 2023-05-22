@@ -15,9 +15,9 @@ if has('ide')
     map <leader>n <Action>(GotoClass)
     map <leader>N <Action>(GotoFile)
     map <C-,> <Action>(Back)
-    map <C-Shift-.> <Action>(Forward)
+    map <C-.> <Action>(Forward)
     map <leader>- <Action>(CollapseRegion)
-    map <leader>+ <Action>(ExpandRegion)
+    map <leader>= <Action>(ExpandRegion)
 else
     nnoremap <Space> <NOP>
     map <Space>B :vsc Resharper.ReSharper_GotoDeclaration<CR>
