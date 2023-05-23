@@ -21,23 +21,24 @@ foreach ($module in $modules)
     }
 }
 
+$currentPath = (Get-Location).Path
 # Set PowerShell profile
 
-New-Item -ItemType symboliclink -Path "$env:USERPROFILE\Documents\PowerShell" -name Microsoft.PowerShell_profile.ps1 -Value ./posh/Microsoft.PowerShell_profile.ps1 -Force
+New-Item -ItemType symboliclink -Path "$env:USERPROFILE\Documents\PowerShell" -name Microsoft.PowerShell_profile.ps1 -Value (Join-Path -Path $currentPath -ChildPath "posh\Microsoft.PowerShell_profile.ps1") -Force
 
 # Prepare .dotfiles
 
 if (!(Test-Path "$env:USERPROFILE\.mytheme.omp.json"))
 {
-    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .mytheme.omp.json -Value ./posh/.mytheme.omp.json
+    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .mytheme.omp.json -Value (Join-Path -Path $currentPath -ChildPath "posh\.mytheme.omp.json")
 }
 
 if (!(Test-Path "$env:USERPROFILE\.vimrc"))
 {
-    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .vimrc -Value ./vim/.vimrc
+    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .vimrc -Value (Join-Path -Path $currentPath -ChildPath "vim\.vimrc" )
 }
 
 if (!(Test-Path "$env:USERPROFILE\.ideavimrc"))
 {
-    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .ideavimrc -Value ./vim/.ideavimrc
+    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .ideavimrc -Value (Join-Path -Path $currentPath -ChildPath ".\vim\.ideavimrc")
 }
