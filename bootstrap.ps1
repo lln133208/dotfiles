@@ -1,3 +1,5 @@
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
+
 # Install oh-my-posh
 
 if (!(Test-Path "$env:USERPROFILE\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe"))
