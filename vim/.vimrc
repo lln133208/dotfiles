@@ -20,11 +20,7 @@ if has('ide')
     map <leader>= <Action>(ExpandRegion)
 else
     nnoremap <Space> <NOP>
-    map <Space>B :vsc Resharper.ReSharper_GotoDeclaration<CR>
-    map <Space>b :vsc Resharper.Resharper_GotoImplementations<CR>
-    map <C-,> :vsc Resharper.Resharper_NavigateBackward<CR>
-    map <C-.> :vsc Resharper.Resharper_NavigateForward<CR>
-    map <Space>u :vsc Resharper.ReSharper_FindUsages<CR>
-    map <Space>n :vsc Resharper.ReSharper_GotoType<CR>
-    map <Space>N :vsc Resharper.ReSharper_GotoFile<CR>
+    let mapleader=" "
+    map <leader>N <Action>(workbench.action.quickOpen)
+    map <leader>b <Action>(editor.action.goToDeclaration)
 endif
