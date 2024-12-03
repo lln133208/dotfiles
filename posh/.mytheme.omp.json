@@ -1,82 +1,99 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "root",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#100e23",
-          "background": "#eb6134",
-          "template": " \uE62A "
-        },
-		{
-          "background": "#5e03fc",
-          "foreground": "#000000",
           "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \ue62a ",
+          "foreground": "#100e23",
+          "powerline_symbol": "\ue0b0",
+          "background": "#eb6134",
+          "type": "root",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
             "time_format": "2006-01-02 15:04:05"
           },
-		  "powerline_symbol": "\ue0b0",
-          "style": "powerline",
           "template": "{{ .CurrentDate | date .Format }} ",
-          "type": "time"
-		},
-        {
-          "type": "path",
-          "style": "powerline",
+          "foreground": "#000000",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#100e23",
-          "background": "#91ddff",
-          "template": " {{ .Path }}",
-		  "trailing_diamond": "\ue0b0",
+          "background": "#5e03fc",
+          "type": "time",
+          "style": "powerline"
+        },
+        {
           "properties": {
+            "cache_duration": "none",
             "folder_icon": "\uf115",
-            "folder_separator_icon": "\u002f",
+            "folder_separator_icon": "/",
             "style": "full"
-          }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "foreground": "#ffffff",
-          "background": "#000000",
-		  "powerline_symbol": "\ue0b0",
-		  "template": " {{ if .Env.POSH_GIT_STRING }}{{ .Env.POSH_GIT_STRING }}{{ end }} "
-        },
-        {
-          "type": "python",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
+          },
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ .Path }}",
           "foreground": "#100e23",
-          "background": "#906cff",
-          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+          "powerline_symbol": "\ue0b0",
+          "background": "#91ddff",
+          "type": "path",
+          "style": "powerline"
         },
         {
-          "type": "exit",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " {{ if .Env.POSH_GIT_STRING }}{{ .Env.POSH_GIT_STRING }}{{ end }} ",
           "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "background": "#000000",
+          "type": "git",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
+          "foreground": "#100e23",
+          "powerline_symbol": "\ue0b0",
+          "background": "#906cff",
+          "type": "python",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \ue20f ",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
           "background": "#ff8080",
-          "template": " \ue20f "
+          "type": "exit",
+          "style": "powerline"
         }
       ]
     },
-	{
+    {
       "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "plain",
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\ufb0c ",
           "foreground": "#eb6134",
-          "template": "\ufb0c "
+          "type": "text",
+          "style": "plain"
         }
       ],
       "newline": true
     }
-  ]
+  ],
+  "version": 3
 }
