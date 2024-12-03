@@ -6,14 +6,38 @@ function Set-PoshGitStatus {
 }
 New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force
 
-$PSOption = @{
-	EditMode = 'Vi'
-	PredictionSource = 'History'
-	PredictionViewStyle = 'ListView'
+
+Import-Module PSReadLine
+
+function SupportAdvancedTerminalFeatures
+{
+	try
+	{
+		$isConsole = [System.Console]::IsOutputRedirected -eq $false
+		$supportVirtualTerminal = $null -ne [System.Console]::TreatControlCAsInput
+		return $isConsole -and $supportVirtualTerminal 
+	}
+	catch
+	{
+		return $false
+	}
 }
 
-Set-PSReadlineOption @PSOption
-Set-PSReadlineKeyHandler -key Tab -Function MenuComplete
+if (SupportAdvancedTerminalFeatures)
+{
+	$PSOption = @{
+		EditMode = 'Vi'
+		PredictionSource = 'History'
+		PredictionViewStyle = 'ListView'
+	}
+	Set-PSReadlineOption @PSOption
+	Set-PSReadlineKeyHandler -key Tab -Function MenuComplete
+}
+else
+{
+	Write-Host "Advanced terminal features are not supported in this terminal."
+}
+
 
 Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
     param($commandName, $wordToComplete, $cursorPosition)
