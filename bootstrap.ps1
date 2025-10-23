@@ -44,3 +44,21 @@ if (!(Test-Path "$env:USERPROFILE\.ideavimrc"))
 {
     New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .ideavimrc -Value (Join-Path -Path $currentPath -ChildPath ".\vim\.ideavimrc")
 }
+
+# Generate gh completion script
+
+if (Get-Command gh -ErrorAction SilentlyContinue)
+{
+    $ghCompletionScript = "$env:USERPROFILE\.gh.completion.ps1"
+    if (!(Test-Path $ghCompletionScript))
+    {
+        Write-Host "Generating gh completion script..."
+        gh completion -s powershell | Out-File $ghCompletionScript -Encoding utf8
+        (Get-Item $ghCompletionScript).Attributes += 'Hidden'
+        Write-Host "gh completion script has been generated and set as hidden."
+    }
+}
+else
+{
+    Write-Host "GitHub CLI (gh) is not installed. Skipping gh completion setup."
+}

@@ -56,3 +56,12 @@ Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
     }
     Remove-Item $completion_file, Env:\_ARGCOMPLETE_STDOUT_FILENAME, Env:\ARGCOMPLETE_USE_TEMPFILES, Env:\COMP_LINE, Env:\COMP_POINT, Env:\_ARGCOMPLETE, Env:\_ARGCOMPLETE_SUPPRESS_SPACE, Env:\_ARGCOMPLETE_IFS, Env:\_ARGCOMPLETE_SHELL
 }
+
+# shell integration
+if ($env:TERM_PROGRAM -eq "vscode") { . "$(code --locate-shell-integration-path pwsh)" }
+
+$gh_completion_script = "$env:USERPROFILE\.gh.completion.ps1"
+if (Test-Path -Path $gh_completion_script -PathType Leaf)
+{
+	. $gh_completion_script
+}
