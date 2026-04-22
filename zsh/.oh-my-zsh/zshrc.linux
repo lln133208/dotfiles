@@ -118,3 +118,6 @@ fi
 if [ -d /usr/local/java ]; then
     export JAVA_HOME=`find /usr/local/java -maxdepth 1 -name 'jdk1.8*'|sort|head -1`
 fi
+
+# Starship prompt
+eval "$(starship init zsh)"

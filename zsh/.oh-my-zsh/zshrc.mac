@@ -47,3 +47,6 @@ export EDITOR='emacs -nw'
 
 # Binary mirror source for Homebrew
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+# Starship prompt
+eval "$(starship init zsh)"

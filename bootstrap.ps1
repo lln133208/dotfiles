@@ -1,17 +1,17 @@
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 
-# Install oh-my-posh
+# Install Starship prompt
 
-if (!(Test-Path "$env:USERPROFILE\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe"))
-{   
-    Write-Host "oh-my-posh is not installed. Will start soon."
-    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
-    Write-Host "oh-my-posh has been installed successfully."
+if (!(Get-Command starship -ErrorAction SilentlyContinue))
+{
+    Write-Host "Starship is not installed. Installing via winget..."
+    winget install --id Starship.Starship --accept-source-agreements --accept-package-agreements
+    Write-Host "Starship has been installed successfully."
 }
 
 # Install modules from https://www.powershellgallery.com/
 
-$modules = @('posh-git', 'PSReadline')
+$modules = @('PSReadline')
 
 foreach ($module in $modules)
 {
@@ -30,10 +30,12 @@ New-Item -ItemType symboliclink -Path "$env:USERPROFILE\Documents\PowerShell" -n
 
 # Prepare .dotfiles
 
-if (!(Test-Path "$env:USERPROFILE\.mytheme.omp.json"))
-{
-    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .mytheme.omp.json -Value (Join-Path -Path $currentPath -ChildPath "posh\.mytheme.omp.json")
-}
+# Starship config
+$starshipConfigDir = "$env:USERPROFILE\.config"
+if (!(Test-Path $starshipConfigDir)) { New-Item -ItemType Directory -Path $starshipConfigDir -Force }
+
+New-Item -ItemType symboliclink -Path $starshipConfigDir -Name starship.toml -Value (Join-Path -Path $currentPath -ChildPath "posh\starship.toml") -Force
+New-Item -ItemType symboliclink -Path $starshipConfigDir -Name starship-gitstatus.ps1 -Value (Join-Path -Path $currentPath -ChildPath "posh\starship-gitstatus.ps1") -Force
 
 if (!(Test-Path "$env:USERPROFILE\.vimrc"))
 {

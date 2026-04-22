@@ -1,0 +1,42 @@
+scan_timeout = 50
+command_timeout = 10000
+
+format = """$sudo$time$directory$git_branch${custom.gitstatus}$python$status$line_break$character"""
+
+[sudo]
+format = "[ ⚡ ](bg:#eb6134 fg:#100e23)[](fg:#eb6134 bg:#5e03fc)"
+disabled = false
+
+[time]
+disabled = false
+format = "[$time ](bg:#5e03fc fg:#000000)[](fg:#5e03fc bg:#91ddff)"
+time_format = "%Y-%m-%d %H:%M:%S"
+
+[directory]
+format = "[ $path](bg:#91ddff fg:#100e23)[](fg:#91ddff bg:#000000)"
+truncation_length = 0
+truncate_to_repo = false
+
+[git_branch]
+format = "[ $symbol$branch ](bg:#000000 fg:#ffffff)"
+symbol = ""
+
+[git_status]
+disabled = true
+
+[custom.gitstatus]
+command = "pwsh -NoProfile -File ~/.config/starship-gitstatus.ps1"
+when = "git rev-parse --is-inside-work-tree"
+format = "([ $output ](bg:#cc0000 fg:#ffffff))[](fg:#cc0000)"
+description = "Git status via native git"
+
+[python]
+format = "[ $virtualenv$version ](bg:#906cff fg:#100e23)"
+
+[status]
+disabled = false
+format = "[ ✖ ](bg:#ff8080 fg:#ffffff)"
+
+[character]
+success_symbol = "[->](bold #eb6134)"
+error_symbol = "[->](bold red)"
