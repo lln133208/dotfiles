@@ -18,16 +18,15 @@ if ! command -v stow &>/dev/null; then
     install_pkg stow
 fi
 
-# Install Starship
-if ! command -v starship &>/dev/null; then
-    echo "Installing starship..."
-    install_pkg starship
-fi
+# Install applications
+echo "Installing applications..."
+[ -z "$(command -v starship)" ] && install_pkg starship
+[ "$OS" = "Darwin" ] && [ -z "$(command -v ghostty)" ] && install_pkg ghostty
 
-# Stow packages
 cd "$DOTFILES_DIR"
-stow -v --target="$HOME" starship vim zsh tmux tig git
+echo "Linking dotfiles..."
 
-chmod +x "$HOME/.config/starship-gitstatus.sh"
+# Link all packages using stow
+stow -v --target="$HOME" vim zsh tmux tig git posh starship ghostty
 
-echo "Bootstrap complete."
+echo "✓ Bootstrap complete!"
