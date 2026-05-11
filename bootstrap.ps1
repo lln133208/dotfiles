@@ -62,3 +62,10 @@ else
 {
     Write-Host "GitHub CLI (gh) is not installed. Skipping gh completion setup."
 }
+
+# Create local profile if not exists
+$localProfile = Join-Path $PSScriptRoot "Micrsoft.PowerShell_Profile.local.ps1"
+if (-not (Test-Path $localProfile))
+{
+    New-Item $localProfile -ItemType File
+}

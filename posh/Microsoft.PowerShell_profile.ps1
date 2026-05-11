@@ -75,3 +75,10 @@ if (Test-Path -Path $gh_completion_script -PathType Leaf)
 
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 #f45873b3-b655-43a6-b217-97c00aa0db58
+
+# load local PowerShell profile
+$localProfile = Join-Path $PSScriptRoot "Micrsoft.PowerShell_Profile.local.ps1"
+if (Test-Path $localProfile)
+{
+    . $localProfile
+}
