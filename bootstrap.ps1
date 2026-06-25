@@ -45,11 +45,11 @@ if (!(Test-Path "$env:USERPROFILE\.ideavimrc"))
     New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .ideavimrc -Value (Join-Path -Path $currentPath -ChildPath ".\vim\.ideavimrc")
 }
 
-# Set rmux config
+# Set WezTerm config
 
-if (!(Test-Path "$env:USERPROFILE\.rmux.conf"))
+if (!(Test-Path "$env:USERPROFILE\.wezterm.lua"))
 {
-    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .rmux.conf -Value (Join-Path -Path $currentPath -ChildPath "rmux\.rmux.conf")
+    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .wezterm.lua -Value (Join-Path -Path $currentPath -ChildPath "wezterm\.wezterm.lua")
 }
 
 # Generate gh completion script
