@@ -45,6 +45,13 @@ if (!(Test-Path "$env:USERPROFILE\.ideavimrc"))
     New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .ideavimrc -Value (Join-Path -Path $currentPath -ChildPath ".\vim\.ideavimrc")
 }
 
+# Set rmux config
+
+if (!(Test-Path "$env:USERPROFILE\.rmux.conf"))
+{
+    New-Item -ItemType symboliclink -Path "$env:USERPROFILE" -Name .rmux.conf -Value (Join-Path -Path $currentPath -ChildPath "rmux\.rmux.conf")
+}
+
 # Generate gh completion script
 
 if (Get-Command gh -ErrorAction SilentlyContinue)

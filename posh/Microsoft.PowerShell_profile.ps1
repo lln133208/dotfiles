@@ -82,3 +82,14 @@ if (Test-Path $localProfile)
 {
     . $localProfile
 }
+
+# rmux fix: rmux 转发 win32 键事件时把 Backspace 与 Ctrl+Backspace 对调了
+#   物理 Backspace      -> PSReadLine 收到 'Ctrl+Backspace'
+#   物理 Ctrl+Backspace -> PSReadLine 收到 'Backspace'
+# 必须放在文件末尾(EditMode 设置之后),否则会被 Set-PSReadLineOption -EditMode 重置。
+# 只在 rmux 会话生效,直连 PowerShell 不受影响。
+if ($env:RMUX)
+{
+    Set-PSReadLineKeyHandler -Chord 'Ctrl+Backspace' -Function BackwardDeleteChar
+    Set-PSReadLineKeyHandler -Chord 'Backspace'      -Function BackwardKillWord
+}
