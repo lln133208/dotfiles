@@ -13,7 +13,7 @@ disabled = false
 
 [time]
 disabled = false
-format = "[$time ](bg:#5e03fc fg:#000000)"
+format = "[$time ](bg:#5e03fc fg:#000000)[\ue0b0](fg:#5e03fc bg:#91ddff)"
 time_format = "%Y-%m-%d %H:%M:%S"
 
 [directory]
@@ -23,22 +23,22 @@ truncate_to_repo = false
 read_only = " 🔒"
 
 [git_branch]
-always_show_remote = true
-format = "[ $symbol$branch(:$remote_branch)](bg:#275BF5 fg:#ffffff)"
+format = "[\ue0b0](fg:#91ddff bg:#275BF5)[ $branch](bg:#275BF5 fg:#ffffff)[\ue0b0](fg:#275BF5)"
 
 [git_status]
-ahead = "⬆️${count}"
-behind = "⬇️${count}"
-modified = "❗${count}"
-staged = "☑️${count}"
-untracked = "❓${count}"
-deleted = "❌${count}"
-conflicted = "↔️${count}"
-diverged = "🔃${count}"
-# up_to_date = "✅"
+style = "bold yellow"
+ahead = "↑${count} "
+behind = "↓${count} "
+diverged = "↕${count} "
+conflicted = "conflict:${count} "
+deleted = "deleted:${count} "
+renamed = "renamed:${count} "
+modified = "modified:${count} "
+staged = "staged:${count} "
+untracked = "untracked:${count} "
 
 [python]
-format = "[ $virtualenv$version ](bg:#906cff fg:#100e23)"
+format = "[ $virtualenv$version ](bg:#906cff fg:#100e23)[\ue0b0](fg:#906cff)"
 
 [character]
 success_symbol = "➡️"
