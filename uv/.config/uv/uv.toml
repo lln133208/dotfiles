@@ -1,0 +1,9 @@
+# Global uv configuration.
+# Docs: https://docs.astral.sh/uv/configuration/files/
+
+# Default to the Tsinghua (TUNA) PyPI mirror.
+# Delete or edit this block to fall back to the official PyPI.
+[[index]]
+name = "tuna"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true

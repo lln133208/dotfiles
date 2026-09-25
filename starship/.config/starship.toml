@@ -41,5 +41,5 @@ untracked = "untracked:${count} "
 format = "[ $virtualenv$version ](bg:#906cff fg:#100e23)[\ue0b0](fg:#906cff)"
 
 [character]
-success_symbol = "➡️"
+success_symbol = "->"
 error_symbol = "[->](bold red)"

@@ -17,6 +17,7 @@ Each top-level directory is a Stow package whose contents mirror the layout of `
 | `wezterm` | `.wezterm.lua` | WezTerm terminal |
 | `vim` | `.vimrc`, `.ideavimrc` | Vim + JetBrains IDEAVim |
 | `posh` | `Microsoft.PowerShell_profile.ps1`, `.mytheme.omp.json` | PowerShell (Windows only) |
+| `uv` | `.config/uv/uv.toml` | uv global config (TUNA PyPI mirror) |
 
 ## Setup
 
@@ -28,7 +29,7 @@ cd ~/.dotfiles
 ./bootstrap.sh
 ```
 
-`bootstrap.sh` installs `stow` (and `starship` / `ghostty` if missing), then links the packages.
+`bootstrap.sh` installs `stow` (and `starship` / `ghostty` / `uv` if missing), then links the packages.
 
 To link a single package manually:
 
@@ -50,7 +51,7 @@ New-Item -ItemType SymbolicLink -Path <target> -Name <name> -Value <source>
 oh-my-zsh is installed and updated by oh-my-zsh itself at `~/.oh-my-zsh`; it is **not** vendored in this repository. Only the personal part is kept here:
 
 - `.zshrc` — entry point: sets `ZSH`, Homebrew mirrors, and sources the platform-specific file.
-- `.zshrc.mac` — macOS customization (plugins, PATH, pyenv, Starship, aliases).
+- `.zshrc.mac` — macOS customization (plugins, PATH, uv, Starship, aliases).
 - `.zshrc.linux` — Linux customization.
 
 ## Notes

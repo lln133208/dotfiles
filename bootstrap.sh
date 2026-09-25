@@ -22,11 +22,12 @@ fi
 echo "Installing applications..."
 [ -z "$(command -v starship)" ] && install_pkg starship
 [ "$OS" = "Darwin" ] && [ -z "$(command -v ghostty)" ] && install_pkg ghostty
+[ "$OS" = "Darwin" ] && [ -z "$(command -v uv)" ] && install_pkg uv
 
 cd "$DOTFILES_DIR"
 echo "Linking dotfiles..."
 
 # Link all packages using stow
-stow -v --target="$HOME" vim zsh tmux tig git posh starship ghostty
+stow -v --target="$HOME" vim zsh tmux tig git posh starship ghostty uv
 
 echo "✓ Bootstrap complete!"
